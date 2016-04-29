@@ -43,7 +43,7 @@ RSCMeasurementCharacteristic.prototype.onUnsubscribe = function() {
 };
 
 RSCMeasurementCharacteristic.prototype.notify = function(event) {
-  if (!('speed_dm_s' in event && 'strokes_per_min' in event) ) {
+  if (!('speed_cm_s' in event && 'stroke_rate' in event) ) {
     // ignore events with no relevant data
     return;
   }
@@ -55,10 +55,10 @@ RSCMeasurementCharacteristic.prototype.notify = function(event) {
   // 00000010 - 2   - 0x002 - Total Distance Present
   var flags = 0;
 
-  var speed = event.speed_dm_s;
-  var spm = event.strokes_per_min;
+  var speed = event.speed_cm_s;
+  var spm = event.stroke_rate;
   debug("speed: " + speed + " strokes per min: " + spm);
-  buffer.writeUInt16LE(speed*256/10, 1);
+  buffer.writeUInt16LE(speed*256/100, 1);
   buffer.writeUInt8(spm, 3);
 
   if ('distance_dm' in event)
