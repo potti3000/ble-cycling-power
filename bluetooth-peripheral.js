@@ -28,7 +28,7 @@ var BluetoothPeripheral = function(name, services) {
   });
 
   this.notify = function(event) {
-    debug("[BLE] notification " + JSON.stringify(event));
+    debug("[BLE] " + JSON.stringify(event));
     self.Services.map(s => s.notify(event));
   };
 

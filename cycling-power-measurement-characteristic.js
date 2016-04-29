@@ -46,7 +46,7 @@ CyclingPowerMeasurementCharacteristic.prototype.onUnsubscribe = function() {
 
 var last_speed = Date.now();
 var last_rev = 0;
-var wheel_circ = 2095;
+const wheel_circ = 2096;
 
 CyclingPowerMeasurementCharacteristic.prototype.notify = function(event) {
   if (!('watts' in event)) {
